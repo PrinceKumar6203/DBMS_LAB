@@ -1,4 +1,4 @@
--- Question 1: Create Department table
+
 CREATE TABLE Department (
     Department_ID INT PRIMARY KEY,
     Department_Name VARCHAR(50),
@@ -7,7 +7,7 @@ CREATE TABLE Department (
 
 
 
--- Question 2: Create Student table and link it with Department
+
 CREATE TABLE Student (
     Student_ID INT PRIMARY KEY,
     Name VARCHAR(50),
@@ -21,7 +21,7 @@ CREATE TABLE Student (
 
 
 
--- Question 3: Create Faculty table and link it with Department
+
 CREATE TABLE Faculty (
     Faculty_ID INT PRIMARY KEY,
     Name VARCHAR(50),
@@ -33,7 +33,7 @@ CREATE TABLE Faculty (
 
 
 
--- Question 4: Create Course table and link it with Department and Faculty
+
 CREATE TABLE Course (
     Course_ID INT PRIMARY KEY,
     Course_Name VARCHAR(50),
@@ -47,7 +47,7 @@ CREATE TABLE Course (
 
 
 
--- Question 5: Create Enrollment table to represent Student-Course M:N relationship
+
 CREATE TABLE Enrollment (
     Enrollment_ID INT PRIMARY KEY,
     Student_ID INT,
@@ -57,3 +57,4 @@ CREATE TABLE Enrollment (
     FOREIGN KEY (Student_ID) REFERENCES Student(Student_ID),
     FOREIGN KEY (Course_ID) REFERENCES Course(Course_ID)
 );
+
