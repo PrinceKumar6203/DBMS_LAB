@@ -1,60 +1,43 @@
-
-CREATE TABLE Department (
-    Department_ID INT PRIMARY KEY,
-    Department_Name VARCHAR(50),
-    Office_Location VARCHAR(50)
+CREATE TABLE DEPARTMENT 
+(
+	DEP_ID int Primary Key,
+	DEP_NAME VARCHAR(50),
+	OFFICE_LOCATION VARCHAR(100)
+);
+CREATE TABLE STUDENT(
+	STUDENT_ID int Primary Key,
+	NAME VARCHAR(50),
+	DATE_OF_BIRTH DATE,
+	GENDER CHAR(1),
+	CONTACT_NO VARCHAR(12),
+	DEP_ID int,
+	FOREIGN KEY(DEP_ID) REFERENCES DEPARTMENT(DEP_ID)
+);
+CREATE TABLE FACULTY(
+	FACULTY_ID int Primary Key,
+	NAME VARCHAR(50),
+	DESIGNATION VARCHAR(50),
+	EMAIL VARCHAR(50),
+	DEP_ID int,
+	FOREIGN KEY(DEP_ID) REFERENCES DEPARTMENT(DEP_ID)
+);
+CREATE TABLE COURSE(
+	COURSE_ID int Primary Key,
+	COURSE_NAME VARCHAR(30),
+	CREDITS int,
+	DEP_ID int,
+	FACULTY_ID int,
+	FOREIGN KEY(DEP_ID) REFERENCES DEPARTMENT(DEP_ID),
+ FOREIGN KEY(FACULTY_ID) REFERENCES FACULTY(FACULTY_ID)
+);
+CREATE TABLE ENROLLMENT(
+	ENROLLMENT_ID int Primary Key,
+	SEMESTER VARCHAR(10),
+	GRADE CHAR(2),
+	STUDENT_ID int,
+	COURSE_ID int,
+	FOREIGN KEY(STUDENT_ID) REFERENCES STUDENT(STUDENT_ID),
+	FOREIGN KEY(COURSE_ID) REFERENCES COURSE(COURSE_ID)
 );
 
-
-
-
-CREATE TABLE Student (
-    Student_ID INT PRIMARY KEY,
-    Name VARCHAR(50),
-    DOB DATE,
-    Gender VARCHAR(10),
-    Contact_No VARCHAR(15),
-    Department_ID INT,
-    FOREIGN KEY (Department_ID) REFERENCES Department(Department_ID)
-);
-
-
-
-
-
-CREATE TABLE Faculty (
-    Faculty_ID INT PRIMARY KEY,
-    Name VARCHAR(50),
-    Designation VARCHAR(30),
-    Email VARCHAR(50),
-    Department_ID INT,
-    FOREIGN KEY (Department_ID) REFERENCES Department(Department_ID)
-);
-
-
-
-
-CREATE TABLE Course (
-    Course_ID INT PRIMARY KEY,
-    Course_Name VARCHAR(50),
-    Credits INT,
-    Department_ID INT,
-    Faculty_ID INT,
-    FOREIGN KEY (Department_ID) REFERENCES Department(Department_ID),
-    FOREIGN KEY (Faculty_ID) REFERENCES Faculty(Faculty_ID)
-);
-
-
-
-
-
-CREATE TABLE Enrollment (
-    Enrollment_ID INT PRIMARY KEY,
-    Student_ID INT,
-    Course_ID INT,
-    Semester VARCHAR(20),
-    Grade VARCHAR(5),
-    FOREIGN KEY (Student_ID) REFERENCES Student(Student_ID),
-    FOREIGN KEY (Course_ID) REFERENCES Course(Course_ID)
-);
 
